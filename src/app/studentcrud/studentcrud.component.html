@@ -1,0 +1,50 @@
+<div class="container-mt-5">
+    <div class="card">
+        <h1>student registration </h1>
+        <form>
+            <div class="form-group">
+                <label> Student Name</label>
+                <input type="text" [(ngModel)]="stname" [ngModelOptions]="{standalone:true}" class="form-control" id="stname">
+            </div>
+            <div class="form-group">
+                <label> course</label>
+                <input type="text" [(ngModel)]="course" [ngModelOptions]="{standalone:true}" class="form-control" id="course">
+            </div>
+            <div class="form-group">
+                <label>fee</label>
+                <input type="text" [(ngModel)]="fee" [ngModelOptions]="{standalone:true}" class="form-control" id="fee">
+            </div>
+            <button type="submit" (click)="save()" class="btn btn-primary mt-4">Save</button>
+        </form>
+    </div>
+</div>
+
+ 
+ <div class="container mt-4">
+    <h1>student table</h1>
+    <table class="table">
+        <thead>
+            <h1 *ngIf="!isResultLoaded">loading .......</h1>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">student name</th>
+                <th scope="col">course</th>
+                <th scope="col">fee</th>
+                <th scope="col">operation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let studentitem of studentArray">
+            <td> {{studentitem.id}} </td>
+            <td> {{studentitem.stname}} </td>
+            <td> {{studentitem.course}} </td>
+            <td> {{studentitem.fee}} </td>
+            <td><button type="button" (click)="setUpdate(studentitem)" class="btn btn-success">Edit</button>
+                <td><button type="button" (click)="setDelete(studentitem.id)" class="btn btn-danger">Delete</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div> 
+
+
